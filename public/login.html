@@ -1,22 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>고객정보 확인</title>
-	</head>
-<body>
+
+<head>
+	<meta charset="UTF-8">
+	<title>고객정보 확인</title>
+
+	<link rel="stylesheet" href="../node_modules/jui/dist/ui.css" />
+	<link rel="stylesheet" href="../node_modules/jui/dist/ui-jennifer.css" />
+	<link rel="stylesheet" href="../node_modules/jui/dist/grid.css" />
+	<link rel="stylesheet" href="../node_modules/jui/dist/grid-dark.css" />
+	<link rel="stylesheet" href="../node_modules/jui/dist/grid-jennifer.css" />
+	<script src="../node_modules/jui/lib/jquery-1.8.0.min.js"></script>
+	<script src="../node_modules/jui/lib/core.js"></script>
+	<script src="../node_modules/jui/dist/ui.js"></script>
+	<script src="../node_modules/jui/dist/grid.js"></script>
+
+	<style type="text/css">
+		.container {
+			width: 100%;
+			position: relative;
+			height: 130px;
+			place-items: center;
+			text-align: center;
+			display: grid;
+			min-height: 100vh;
+		}
+	</style>
+</head>
+
+<body class="jui">
 	<form method="post" action="/process/login">
-		<table>
-			<tr>
-				<td><label>고 객 명</label></td>
-				<td><input type="text" name="custName" /></td>
-			</tr>
-			<tr>
-				<td><label>전화번호</label></td>
-				<td><input type="text" name="hpNo" /></td>
-			</tr>
-		</table>
-		<input type="submit" value="확인" name=""/>
+		<div class="container">
+			<table  class="table classic normal" style="width: 400px; height: 200px;">
+				<thead style=" height: 50px;">
+					<tr style=" height: 40%;">
+						<th colspan="2" style="text-align: center; font-size: large;">
+							-------------안내 문구------------
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style=" height: 40%;">
+						<td><label>고 객 명</label></td>
+						<td><input type="text" class="edit" name="custName" /></td>
+					</tr>
+					<tr style=" height: 40%;">
+						<td><label>전화번호</label></td>
+						<td><input type="text" class="edit" name="hpNo" /></td>
+					</tr>
+					<tr style=" height: 20%;">
+						<td colspan="2"><button class="btn normal" onclick="">확인</button> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</form>
 </body>
+
 </html>
