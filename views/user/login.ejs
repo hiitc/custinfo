@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="shortcut icon" href="http://angangenc.co.kr/kr/favicon.png" />	
+    <style type="text/css">
+        body {
+
+            /*opacity: 0.5; 
+            filter: alpha(opacity=50);
+            background: #fff;*/
+        }
+
+        .bluetop {
+            border-collapse: collapse;
+            border-top: 3px solid rgba(170, 25, 56, 0.856);
+        }
+
+        .bluetop th {
+            color: rgba(170, 25, 56, 0.856);
+            background: #fcf1f5;
+        }
+
+        .bluetop th,
+        .bluetop td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .bluetop th:first-child,
+        .bluetop td:first-child {
+            border-left: 0;
+        }
+
+        .bluetop th:last-child,
+        .bluetop td:last-child {
+            border-right: 0;
+        }
+
+        .container {
+            width: 100%;
+            position: relative;
+            height: 50px;
+            place-items: center;
+            text-align: center;
+            display: grid;
+            min-height: 100vh;
+
+        }
+
+        .bgi {
+            background-image: url("http://angangenc.co.kr/kr/assets/img/logo/svg/logo-en-color.svg");
+            background-size: cover;
+            height: 59%;
+            width: 100%;
+            place-items: center;
+        }
+
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+
+    <form action="/users/login" method="post">
+        <div class="container">
+            <table class="bluetop" style="width: 400px; height: 200px;margin-top: 50px; place-items: center;">
+                <thead style=" height: 50px;">
+                    <tr style=" height: 40%;">
+                        <th colspan="2" style="text-align: center; font-size: large ;">
+                            로그인
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style=" height: 40%;">
+                        <td><label>고 객 명</label></td>
+                        <td><input id="user" type="text"  name="userName" title="이름 입력" /></td>
+                    </tr>
+                    <tr style=" height: 40%;">
+                        <td><label>전화번호</label></td>
+                        <td><input id="hp" type="text"  name="hpNo" title="전화 번호 입력" /></td>
+                    </tr>
+                    <tr style=" height: 40%; ">
+                        <td colspan="2"><button type="submit" class="btn normal">확 인</button> </td>
+                        <script id="tpl_popover" type="text/template">
+                        <div class="popover <!= position !>" style="z-index: 10001; background: <!= color !>">
+                            <div class="body">
+                                <div class="image"><i class="icon-caution"></i></div>
+                                <div class="message"><!= message !></div>
+                            </div>
+                        </div>
+                    </script>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="http://angangenc.co.kr/" title="홈페이지로 이동">
+                <img src="http://angangenc.co.kr/kr/assets/img/logo/svg/logo-en-color.svg" alt="로고"
+                    style="opacity: 0.5; filter: alpha(opacity=50); " width="80%">
+            </a>
+        </div>
+
+    </form>
+
+
+</body>
+
+</html>
