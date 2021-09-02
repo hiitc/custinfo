@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
     <script type="text/javascript">
-    
+
         // var frm = document.getElementById("frm");
 
 
         // frm.submit();
 
-        var rowclick = function(e) {
+        var rowclick = function (e) {
             console.log(e.children)
             console.log(e.children[3].defaultValue)
             console.log(e.children[4].defaultValue)
 
-            sendAjax('/users/detail', {custCode : e.children[3].defaultValue, seq : e.children[4].defaultValue})
-            
+            sendAjax_top('/users/detail_top', { custCode: e.children[3].defaultValue, seq: e.children[4].defaultValue })
+
+            sendAjax('/users/detail', { custCode: e.children[3].defaultValue, seq: e.children[4].defaultValue })
+
+
         }
     </script>
     <link rel="shortcut icon" href="http://angangenc.co.kr/kr/favicon.png" />
@@ -60,114 +66,270 @@
             display: grid;
             min-height: 100vh;
         }
-
-        .container {
-            width: 100%;
-            position: relative;
-            height: 130px;
-            place-items: center;
-            text-align: center;
-            display: grid;
-            min-height: 100vh;
-        }
     </style>
-    
+
 </head>
+
 <body>
-    <h1><%= title %></h1>
+    <h1>
+        <%= title %>
+    </h1>
 
     <script>
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
-		//send함수 'http://localhost:3000/ajax'주소에 inputdata를 보냅니다.
-        function sendAjax(url, data) {
-
+        function sendAjax_top(url, data) {
             data = JSON.stringify(data);
-            
-    		//data에 inputdata를 json형식으로 넣고 이를 xmlhttprequest를 통해 post방식으로 보냅니다.
+
             var xhr = new XMLHttpRequest();
             xhr.open('POST', url);
             xhr.setRequestHeader('Content-type', "application/json");
             xhr.send(data);
-			
+
+            xhr.addEventListener('load', function () {
+                var result = JSON.parse(xhr.responseText);
+
+                if (document.getElementById("toptable")) {
+                    console.log('already toptable')
+                    document.getElementById("toptable").remove();
+                } else {
+                    console.log('toptable')
+                }
+
+
+                var table01 = document.createElement('TABLE');
+                table01.id = "toptable";
+                table01.className = "bluetop";
+                table01.style.width = "500px";
+
+                var th01 = document.createElement("TH");
+                th01.innerHTML = "수분양자 성명";
+                th01.style.width = "200px";
+                th01.style.padding = "3px";
+                th01.style.textAlign = "center";
+                th01.colSpan = "2";
+
+
+                var td01 = document.createElement("TD");
+                td01.innerHTML = result[0]["custname"];
+                td01.style.width = "300px";
+                td01.style.padding = "3px";
+                td01.style.textAlign = "center";
+
+
+                var tr = document.createElement("TR");
+                tr.appendChild(th01)
+                tr.appendChild(td01)
+
+                table01.appendChild(tr)
+
+
+                var th02_r = document.createElement("TH");
+                th02_r.innerHTML = "분양물건";
+                th02_r.style.width = "100px"
+                th02_r.style.padding = "3px";
+                th02_r.style.textAlign = "center";
+                th02_r.rowSpan = "4";
+
+                var th02 = document.createElement("TH");
+                th02.innerHTML = "건물명";
+                th02.style.width = "100px";
+                th02.style.padding = "3px";
+                th02.style.textAlign = "center";
+
+                var td02 = document.createElement("TD");
+                td02.innerHTML = result[0]["shortname"];
+                td02.style.width = "300px";
+                td02.style.padding = "3px";
+                td02.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(th02_r)
+                tr.appendChild(th02)
+                tr.appendChild(td02)
+
+                table01.appendChild(tr)
+
+
+
+
+                var th03 = document.createElement("TH");
+                th03.innerHTML = "주소";
+                th03.style.width = "100px";
+                th03.style.padding = "3px";
+                th03.style.textAlign = "center";
+
+                var td03 = document.createElement("TD");
+                td03.innerHTML = result[0]["address"];
+                td03.style.width = "300px";
+                td03.style.padding = "3px";
+                td03.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(th03)
+                tr.appendChild(td03)
+
+                table01.appendChild(tr)
+
+                var th04 = document.createElement("TH");
+                th04.innerHTML = "용도";
+                th04.style.width = "100px";
+                th04.style.padding = "3px";
+                th04.style.textAlign = "center";
+
+                var td04 = document.createElement("TD");
+                td04.innerHTML = result[0]["house_name"];
+                td04.style.width = "300px";
+                td04.style.padding = "3px";
+                td04.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(th04)
+                tr.appendChild(td04)
+
+                table01.appendChild(tr)
+
+
+                var th05 = document.createElement("TH");
+                th05.innerHTML = "동/호";
+                th05.style.width = "100px";
+                th05.style.padding = "3px";
+                th05.style.textAlign = "center";
+
+                var td05 = document.createElement("TD");
+                td05.innerHTML = result[0]["out_buildno"] + " / " + result[0]["out_houseno"];
+                td05.style.width = "300px";
+                td05.style.padding = "3px";
+                td05.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(th05)
+                tr.appendChild(td05)
+
+                table01.appendChild(tr)
+
+
+
+                var th06 = document.createElement("TH");
+                th06.innerHTML = "총분양대금";
+                th06.style.width = "200px";
+                th06.style.padding = "3px";
+                th06.style.textAlign = "center";
+                th06.colSpan = "2";
+
+                var td06 = document.createElement("TD");
+                td06.innerHTML = numberWithCommas(result[0]["htot_amt"]);
+                td06.style.width = "300px";
+                td06.style.padding = "3px";
+                td06.style.textAlign = "center";
+
+
+                var tr = document.createElement("TR");
+                tr.appendChild(th06)
+                tr.appendChild(td06)
+
+                table01.appendChild(tr)
+
+                table_top.appendChild(table01)
+            });
+
+        }
+
+        //send함수 'http://localhost:3000/ajax'주소에 inputdata를 보냅니다.
+        function sendAjax(url, data) {
+
+            data = JSON.stringify(data);
+
+            //data에 inputdata를 json형식으로 넣고 이를 xmlhttprequest를 통해 post방식으로 보냅니다.
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url);
+            xhr.setRequestHeader('Content-type', "application/json");
+            xhr.send(data);
+
             //서버에서 결과가 도착하면 그것을 result div에 입력합니다.
             xhr.addEventListener('load', function () {
                 var result = JSON.parse(xhr.responseText);
                 var html = '';
-                
-                if (document.getElementById("detailTable")) {
-                    console.log('잇다 지워라')
-                    document.getElementById("detailTable").remove();
-                } else{
-                    console.log('없음')
-                }
-                
-                var table = document.createElement('TABLE');
+
+
+
+                    if (document.getElementById("detailTable")) {
+                        console.log('already detailTable')
+                        document.getElementById("detailTable").remove();
+                    } else {
+                        console.log('detailTable')
+                    }
+
+
+                    var table = document.createElement('TABLE');
                     table.id = "detailTable"
                     table.className = "bluetop"
                     table.style.width = "1000px"
 
 
 
-                var td1 = document.createElement("TH");
+                    var td1 = document.createElement("TH");
                     td1.innerHTML = "구분";
                     td1.style.width = "100px"
                     td1.style.padding = "3px";
                     td1.style.textAlign = "center";
 
-                var td2 = document.createElement("TH");
+
+
+
+                    var td2 = document.createElement("TH");
                     td2.innerHTML = "약정일";
                     td2.style.padding = "3px";
                     td2.style.textAlign = "center";
 
-                var td3 = document.createElement("TH");
+                    var td3 = document.createElement("TH");
                     td3.innerHTML = "약정금액";
                     td3.style.width = "90px"
                     td3.style.textAlign = "center";
 
-                var td4 = document.createElement("TH");
+                    var td4 = document.createElement("TH");
                     td4.innerHTML = "납입횟수";
                     td4.style.padding = "3px";
                     td4.style.textAlign = "center";
 
-                var td5 = document.createElement("TH");
+                    var td5 = document.createElement("TH");
                     td5.innerHTML = "입금일";
                     td5.style.padding = "3px";
                     td5.style.textAlign = "center";
 
-                var td6 = document.createElement("TH");
+                    var td6 = document.createElement("TH");
                     td6.innerHTML = "입금금액";
                     td6.style.width = "90px"
                     td6.style.textAlign = "center";
 
-                var td7 = document.createElement("TH");
+                    var td7 = document.createElement("TH");
                     td7.innerHTML = "연체일수";
                     td7.style.padding = "3px";
                     td7.style.textAlign = "center";
 
-                var td8 = document.createElement("TH");
+                    var td8 = document.createElement("TH");
                     td8.innerHTML = "연체금액";
                     td8.style.padding = "3px";
                     td8.style.textAlign = "center";
 
-                var td9 = document.createElement("TH");
+                    var td9 = document.createElement("TH");
                     td9.innerHTML = "할인일수";
                     td9.style.padding = "3px";
                     td9.style.textAlign = "center";
 
-                var td10 = document.createElement("TH");
+                    var td10 = document.createElement("TH");
                     td10.innerHTML = "할인금액";
                     td10.style.padding = "3px";
                     td10.style.textAlign = "center";
 
-                var td11 = document.createElement("TH");
+                    var td11 = document.createElement("TH");
                     td11.innerHTML = "실납입액";
                     td11.style.width = "90px"
                     td11.style.textAlign = "center";
 
-                var tr = document.createElement("TR");
+                    var tr = document.createElement("TR");
                     tr.appendChild(td1)
                     tr.appendChild(td2)
                     tr.appendChild(td3)
@@ -180,69 +342,69 @@
                     tr.appendChild(td10)
                     tr.appendChild(td11)
 
-                table.appendChild(tr)
+                    table.appendChild(tr)
 
-                for (key in result){
-                    var td1 = document.createElement("TD");
+                    for (key in result) {
+                        var td1 = document.createElement("TD");
                         td1.innerHTML = result[key]["agree_name"];
                         td1.style.padding = "3px";
                         td1.style.textAlign = "center";
 
-                    var td2 = document.createElement("TD");
-                        td2.innerHTML = result[key]["agreedate"].substr(0,10);
+                        var td2 = document.createElement("TD");
+                        td2.innerHTML = result[key]["agreedate"].substr(0, 10);
                         td2.style.padding = "3px";
                         td2.style.textAlign = "center";
 
-                    var td3 = document.createElement("TD");
+                        var td3 = document.createElement("TD");
                         td3.innerHTML = numberWithCommas(result[key]["agreeamt"]);
                         td3.style.padding = "3px";
                         td3.style.textAlign = "right";
 
-                    var td4 = document.createElement("TD");
+                        var td4 = document.createElement("TD");
                         td4.innerHTML = result[key]["times"];
                         td4.style.padding = "3px";
                         td4.style.textAlign = "center";
 
-                    var td5 = document.createElement("TD");
-                        if (result[key]["receiptdate"]){
-                            td5.innerHTML = result[key]["receiptdate"].substr(0,10);
+                        var td5 = document.createElement("TD");
+                        if (result[key]["receiptdate"]) {
+                            td5.innerHTML = result[key]["receiptdate"].substr(0, 10);
                         } else {
                             td5.innerHTML = result[key]["receiptdate"];
                         }
                         td5.style.padding = "3px";
                         td5.style.textAlign = "center";
 
-                    var td6 = document.createElement("TD");
+                        var td6 = document.createElement("TD");
                         td6.innerHTML = numberWithCommas(result[key]["receiptamt"]);
                         td6.style.padding = "3px";
                         td6.style.textAlign = "right";
 
-                    var td7 = document.createElement("TD");
+                        var td7 = document.createElement("TD");
                         td7.innerHTML = result[key]["delaydays"];
                         td7.style.padding = "3px";
                         td7.style.textAlign = "center";
 
-                    var td8 = document.createElement("TD");
+                        var td8 = document.createElement("TD");
                         td8.innerHTML = numberWithCommas(result[key]["delayamt"]);
                         td8.style.padding = "3px";
                         td8.style.textAlign = "right";
 
-                    var td9 = document.createElement("TD");
+                        var td9 = document.createElement("TD");
                         td9.innerHTML = result[key]["discntdays"];
                         td9.style.padding = "3px";
                         td9.style.textAlign = "center";
 
-                    var td10 = document.createElement("TD");
+                        var td10 = document.createElement("TD");
                         td10.innerHTML = numberWithCommas(result[key]["discntamt"]);
                         td10.style.padding = "3px";
                         td10.style.textAlign = "right";
 
-                    var td11 = document.createElement("TD");
+                        var td11 = document.createElement("TD");
                         td11.innerHTML = numberWithCommas(result[key]["real_receiptamt"]);
                         td11.style.padding = "3px";
                         td11.style.textAlign = "right";
 
-                    var tr = document.createElement("TR");
+                        var tr = document.createElement("TR");
                         tr.appendChild(td1)
                         tr.appendChild(td2)
                         tr.appendChild(td3)
@@ -254,15 +416,15 @@
                         tr.appendChild(td9)
                         tr.appendChild(td10)
                         tr.appendChild(td11)
-                    table.appendChild(tr)
-                }
+                        table.appendChild(tr)
+                    }
 
-                setTable.appendChild(table)
+                    setTable.appendChild(table)
+                
 
-                
-                
+
                 //document.getElementById('detail').appendChild(html);
-              //  console.log(xhr.responseText);
+                //  console.log(xhr.responseText);
 
                 //document.querySelector(".result").innerHTML = xhr.responseText
             });
@@ -271,40 +433,45 @@
     </script>
 
 
-<form id="frm">
-    <input type="hidden" id="a" name="out_buildno">
-    <input type="hidden" id="b" name="out_houseno">
-</form>
+    <form id="frm">
+        <input type="hidden" id="a" name="out_buildno">
+        <input type="hidden" id="b" name="out_houseno">
+    </form>
 
-<div style=" border:1px solid #fcf1f5;; float:left; height: 50%;">
-<table class="bluetop">
-    <tr>
-        <th>현장</th>
-        <th>동</th>
-        <th>호수</th>
-    </tr>
-    <%
-    for(var i=0; i<result.length; i++)
-    {
-        var data = result[i];
-    %>
-    <tr onclick="rowclick(this)">
-        <td><%=data.SHORTNAME%></td>
-        <td><%=data.out_buildno%></td>
-        <td><%=data.out_houseno%></td>
-        <input type="hidden" value="<%=data.custcode%>"></input>
-        <input type="hidden" value="<%=data.seq%>"></input>
-    </tr>
-    <%}%>
-</table>
-</div>
-<div id = "setTable" style="float:left; border:1px solid #fcf1f5;; margin-left: 50px; height: 50%;"></div>
-<footer style="text-align: center;">
-<div style="place-items: center; margin-top: 600px; width: 100%; height: 20%;">
-    <a href="http://angangenc.co.kr/" title="홈페이지로 이동">
-        <img src="http://angangenc.co.kr/kr/assets/img/logo/svg/logo-en-color.svg" alt="로고" style="opacity: 0.5; filter: alpha(opacity=50); "width ="20%">
-    </a>
-</div>
-</footer>
+    <div style=" border:1px solid #fcf1f5;; float:left; height: 50%;">
+        <table class="bluetop">
+            <tr>
+                <th>현장</th>
+                <th>동</th>
+                <th>호수</th>
+            </tr>
+            <% for(var i=0; i<result.length; i++) { var data=result[i]; %>
+                <tr onclick="rowclick(this)">
+                    <td>
+                        <%=data.SHORTNAME%>
+                    </td>
+                    <td>
+                        <%=data.out_buildno%>
+                    </td>
+                    <td>
+                        <%=data.out_houseno%>
+                    </td>
+                    <input type="hidden" value="<%=data.custcode%>"></input>
+                    <input type="hidden" value="<%=data.seq%>"></input>
+                </tr>
+                <%}%>
+        </table>
+    </div>
+    <div id="table_top" style="float:left; border:1px solid #fcf1f5;; margin-left: 50px; height: 50%;"></div>
+    <div id="setTable" style="float:left; border:1px solid #fcf1f5;; margin-left: 50px; height: 50%;"></div>
+    <footer style="text-align: center;">
+        <div style="place-items: center; margin-top: 600px; width: 100%; height: 20%;">
+            <a href="http://angangenc.co.kr/" title="홈페이지로 이동">
+                <img src="http://angangenc.co.kr/kr/assets/img/logo/svg/logo-en-color.svg" alt="로고"
+                    style="opacity: 0.5; filter: alpha(opacity=50); " width="20%">
+            </a>
+        </div>
+    </footer>
 </body>
+
 </html>

@@ -52,6 +52,25 @@ router.post("/detail", async function(req,res,next){
     }
   });
 });
+
+router.post("/detail_top", async function(req,res,next){
+  var body = req.body;
+
+  var query = "select * from dbo.hpage_contract_info('" + body.custCode + "'," + body.seq + ")";
+  console.log(query);
+
+  
+  db.execute(query, function(result){
+    console.log(result);
+
+    if (result != null && result.recordset.length > 0){
+      //console.log(result);
+      res.send(result.recordset);
+    } else {
+      res.render("error");
+    }
+  });
+});
   //res.render("user/login");
   //
   // let result = await models.user.findOne({
