@@ -112,10 +112,16 @@
                 if (document.getElementById("toptable")) {
                     console.log('already toptable')
                     document.getElementById("toptable").remove();
-                } else {
+                } else  {
                     console.log('toptable')
                 }
 
+                if (document.getElementById("middletable")) {
+                    console.log('already middletable')
+                    document.getElementById("middletable").remove();
+                } else {
+                    console.log('middletable')
+                }
 
                 var table01 = document.createElement('TABLE');
                 table01.id = "toptable";
@@ -251,6 +257,81 @@
                 table01.appendChild(tr)
 
                 table_top.appendChild(table01)
+
+
+                var table = document.createElement('TABLE');
+                table.id = "middletable"
+                table.className = "bluetop"
+                table.style.width = "500px"
+
+                var td0 = document.createElement("TH");
+                td0.innerHTML = "구분";
+                td0.style.width = "50px"
+                td0.style.padding = "3px";
+                td0.style.textAlign = "center";
+
+                var td1 = document.createElement("TH");
+                td1.innerHTML = "은행";
+                td1.style.width = "250px"
+                td1.style.padding = "3px";
+                td1.style.textAlign = "center";
+
+
+                var td2 = document.createElement("TH");
+                td2.innerHTML = "금액";
+                td2.style.width = "100px"
+                td2.style.padding = "3px";
+                td2.style.textAlign = "center";
+
+                var td3 = document.createElement("TH");
+                td3.innerHTML = "금리";
+                td3.style.width = "100px"
+                td3.style.padding = "3px";
+                td3.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(td0)
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+
+                table.appendChild(tr)
+                
+                var td0 = document.createElement("TD");
+                td0.innerHTML = "대출";
+                td0.style.width = "50px"
+                td0.style.padding = "3px";
+                td0.style.textAlign = "center";
+
+                var td1 = document.createElement("TD");
+                td1.innerHTML = result[0]["daechul_bankname"];
+                td1.style.width = "250px"
+                td1.style.padding = "3px";
+                td1.style.textAlign = "center";
+
+
+                var td2 = document.createElement("TD");
+                td2.innerHTML = numberWithCommas(result[0]["daechul_amt"]);
+                td2.style.width = "100px"
+                td2.style.padding = "3px";
+                td2.style.textAlign = "right";
+
+                var td3 = document.createElement("TD");
+                td3.innerHTML = result[0]["daechul_rate_text"];
+                td3.style.width = "100px"
+                td3.style.padding = "3px";
+                td3.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(td0)
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+
+                table.appendChild(tr)
+
+                table_middle.appendChild(table)
+
             });
 
         }
@@ -268,10 +349,14 @@
 
             //서버에서 결과가 도착하면 그것을 result div에 입력합니다.
             xhr.addEventListener('load', function () {
-                var result = JSON.parse(xhr.responseText);
-                var html = '';
-
-
+                var result  = JSON.parse(xhr.responseText);
+                var html    = '';
+                
+                var agreeamt_sum        = 0;
+                var receiptamt_sum      = 0;
+                var delayamt_sum        = 0;
+                var discntamt_sum       = 0;
+                var real_receiptamt_sum = 0;
 
                 if (document.getElementById("detailTable")) {
                     console.log('already detailTable')
@@ -284,17 +369,19 @@
                 var table = document.createElement('TABLE');
                 table.id = "detailTable"
                 table.className = "bluetop"
-                table.style.width = "1000px"
+                table.style.width = "1050px"
 
-
+                var td0 = document.createElement("TH");
+                td0.innerHTML = "완납";
+                td0.style.width = "50px"
+                td0.style.padding = "3px";
+                td0.style.textAlign = "center";
 
                 var td1 = document.createElement("TH");
                 td1.innerHTML = "구분";
                 td1.style.width = "100px"
                 td1.style.padding = "3px";
                 td1.style.textAlign = "center";
-
-
 
 
                 var td2 = document.createElement("TH");
@@ -348,6 +435,7 @@
                 td11.style.textAlign = "center";
 
                 var tr = document.createElement("TR");
+                tr.appendChild(td0)
                 tr.appendChild(td1)
                 tr.appendChild(td2)
                 tr.appendChild(td3)
@@ -363,6 +451,18 @@
                 table.appendChild(tr)
 
                 for (key in result) {
+
+                    var td0 = document.createElement("TD");
+                    if (result[key]["perpecttag"] == 'Y') { 
+                        td0.innerHTML = "완납"
+                    } else { 
+                    td0.innerHTML = "미납"
+                    }
+                    /*td0.innerHTML = result[key]["perpecttag"];*/
+                    td0.style.padding = "3px";
+                    td0.style.textAlign = "center";
+
+
                     var td1 = document.createElement("TD");
                     td1.innerHTML = result[key]["agree_name"];
                     td1.style.padding = "3px";
@@ -423,6 +523,7 @@
                     td11.style.textAlign = "right";
 
                     var tr = document.createElement("TR");
+                    tr.appendChild(td0)
                     tr.appendChild(td1)
                     tr.appendChild(td2)
                     tr.appendChild(td3)
@@ -435,7 +536,87 @@
                     tr.appendChild(td10)
                     tr.appendChild(td11)
                     table.appendChild(tr)
+
+                    agreeamt_sum = agreeamt_sum + result[key]["agreeamt"]
+                    receiptamt_sum = receiptamt_sum + result[key]["receiptamt"]
+                    delayamt_sum = delayamt_sum + result[key]["delayamt"]
+                    discntamt_sum = discntamt_sum + result[key]["discntamt"]
+                    real_receiptamt_sum = real_receiptamt_sum + result[key]["real_receiptamt"]
                 }
+
+
+
+                agreeamt_sum 
+                receiptamt_sum
+                delayamt_sum 
+                discntamt_sum 
+                real_receiptamt_sum
+                var td0 = document.createElement("TD");
+ 
+                td0.innerHTML = "합계"
+                td0.style.padding = "3px";
+                td0.style.textAlign = "center"
+                td0.colSpan = "3";
+
+
+                var td3 = document.createElement("TD");
+                td3.innerHTML = numberWithCommas(agreeamt_sum);
+                td3.style.padding = "3px";
+                td3.style.textAlign = "right";
+
+                var td4 = document.createElement("TD");
+                td4.innerHTML = "";
+                td4.style.padding = "3px";
+                td4.style.textAlign = "center";
+
+                var td5 = document.createElement("TD");
+                td5.innerHTML = "";
+                td5.style.padding = "3px";
+                td5.style.textAlign = "center";
+
+                var td6 = document.createElement("TD");
+                td6.innerHTML = numberWithCommas(receiptamt_sum);
+                td6.style.padding = "3px";
+                td6.style.textAlign = "right";
+
+                var td7 = document.createElement("TD");
+                td7.innerHTML = "";
+                td7.style.padding = "3px";
+                td7.style.textAlign = "center";
+
+                var td8 = document.createElement("TD");
+                td8.innerHTML = numberWithCommas(delayamt_sum);
+                td8.style.padding = "3px";
+                td8.style.textAlign = "right";
+
+                var td9 = document.createElement("TD");
+                td9.innerHTML = "";
+                td9.style.padding = "3px";
+                td9.style.textAlign = "center";
+
+                var td10 = document.createElement("TD");
+                td10.innerHTML = numberWithCommas(discntamt_sum);
+                td10.style.padding = "3px";
+                td10.style.textAlign = "right";
+
+                var td11 = document.createElement("TD");
+                td11.innerHTML = numberWithCommas(real_receiptamt_sum);
+                td11.style.padding = "3px";
+                td11.style.textAlign = "right";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(td0)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+                tr.appendChild(td6)
+                tr.appendChild(td7)
+                tr.appendChild(td8)
+                tr.appendChild(td9)
+                tr.appendChild(td10)
+                tr.appendChild(td11)
+                table.appendChild(tr)
+
 
                 setTable.appendChild(table)
 
@@ -456,7 +637,7 @@
         <input type="hidden" id="b" name="out_houseno">
     </form>
 
-    <div style=" border:1px solid #fcf1f5;; float:left; height: 50%;">
+    <div style=" border:1px solid #fcf1f5; float:left; height: 100%; margin-right: 50px; margin-bottom: 400px;">
         <table class="bluetop" id = "left_table">
             <tr>
                 <th>현장</th>
@@ -480,8 +661,10 @@
                 <%}%>
         </table>
     </div>
-    <div id="table_top" style="float:left; border:1px solid #fcf1f5;; margin-left: 50px; height: 50%;"></div>
-    <div id="setTable" style="float:left; border:1px solid #fcf1f5;; margin-left: 50px; height: 50%;"></div>
+    <div id="table_top"    style="margin-bottom: 10px;"></div>
+    <div id="table_middle" style="margin-bottom: 10px;"></div>
+    <div id="setTable"     style="float:left; border:1px solid #fcf1f5; "></div>  
+    
     <footer style="text-align: center;">
         <div style="place-items: center; margin-top: 600px; width: 100%; height: 20%;">
             <a>
