@@ -311,7 +311,14 @@
 
 
                 var td2 = document.createElement("TD");
-                td2.innerHTML = numberWithCommas(result[0]["daechul_amt"]);
+                if(result[0]["daechul_amt"]) {
+                    td2.innerHTML = numberWithCommas(result[0]["daechul_amt"]);
+                }
+                else{
+                    td2.innerHTML = 0 ;
+                }
+                
+                    
                 td2.style.width = "100px"
                 td2.style.padding = "3px";
                 td2.style.textAlign = "right";
