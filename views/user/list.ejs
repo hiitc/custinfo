@@ -235,6 +235,46 @@
                 table01.appendChild(tr)
 
 
+                var th07 = document.createElement("TH");
+                th07.innerHTML = "공급가액";
+                th07.style.width = "100px";
+                th07.style.padding = "3px";
+                th07.style.textAlign = "center";
+                th07.colSpan = "2";
+
+                var td07 = document.createElement("TD");
+                td07.innerHTML = numberWithCommas(result[0]["supply_amt"]);
+                td07.style.width = "300px";
+                td07.style.padding = "3px";
+                td07.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(th07)
+                tr.appendChild(td07)
+
+                table01.appendChild(tr)
+
+
+                var th08 = document.createElement("TH");
+                th08.innerHTML = "부가세";
+                th08.style.width = "100px";
+                th08.style.padding = "3px";
+                th08.style.textAlign = "center";
+                th08.colSpan = "2";
+
+                var td08 = document.createElement("TD");
+                td08.innerHTML = numberWithCommas(result[0]["vat_amt"]);
+                td08.style.width = "300px";
+                td08.style.padding = "3px";
+                td08.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(th08)
+                tr.appendChild(td08)
+
+                table01.appendChild(tr)
+
+
 
                 var th06 = document.createElement("TH");
                 th06.innerHTML = "총분양대금";
