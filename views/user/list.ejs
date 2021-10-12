@@ -502,6 +502,8 @@
                     var td0 = document.createElement("TD");
                     if (result[key]["perpecttag"] == 'Y') {
                         td0.innerHTML = "완납"
+                    } else if (result[key]["perpecttag"] == 'O'){
+                        td0.innerHTML = "예정"
                     } else {
                         td0.innerHTML = "미납"
                     }
