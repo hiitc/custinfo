@@ -20,7 +20,7 @@ router.get('/login', function(req, res) {
 router.post("/login", async function(req,res,next){
   var body = req.body;
 
-  var query = "select * from dbo.hpage_custlist('" + body.userName + "','" + body.hpNo + "')";
+  var query = "select * from dbo.hpage_custlist('" + body.userName + "','" + body.hpNo + "') order by shortname, buildno, houseno";
   console.log(query);
   
   db.execute(query, function(result){
