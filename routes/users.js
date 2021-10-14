@@ -56,7 +56,7 @@ router.post("/detail", async function(req,res,next){
 router.post("/detail_top", async function(req,res,next){
   var body = req.body;
 
-  var query = "select * from dbo.hpage_contract_info('" + body.custCode + "'," + body.seq + ")";
+  var query = "select * from dbo.hpage_contract_info('" + body.custCode + "'," + body.seq + ") order by shortname, buildno, houseno";
   console.log(query);
 
   
