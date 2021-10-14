@@ -111,14 +111,18 @@
 
                 if (document.getElementById("toptable")) {
                     console.log('already toptable')
-                    document.getElementById("toptable").remove();
+                    //document.getElementById("toptable").remove();
+                    var reMov = document.getElementById("toptable")
+                    reMov.parentNode.removeChild(reMov);
                 } else {
                     console.log('toptable')
                 }
 
                 if (document.getElementById("middletable")) {
                     console.log('already middletable')
-                    document.getElementById("middletable").remove();
+                    //document.getElementById("middletable").remove();
+                    var reMov = document.getElementById("middletable")
+                    reMov.parentNode.removeChild(reMov);
                 } else {
                     console.log('middletable')
                 }
@@ -407,7 +411,10 @@
 
                 if (document.getElementById("detailTable")) {
                     console.log('already detailTable')
-                    document.getElementById("detailTable").remove();
+                    //document.getElementById("detailTable").remove();
+                    var reMov = document.getElementById("detailTable")
+                    reMov.parentNode.removeChild(reMov);
+                    
                 } else {
                     console.log('detailTable')
                 }
