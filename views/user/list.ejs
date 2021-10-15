@@ -729,7 +729,7 @@
                 var table = document.createElement('TABLE');
                 table.id = "righttable"
                 table.className = "bluetop"
-                //table.style.width = "1050px"
+                table.style.width = "500px"
 
                 var td0 = document.createElement("TH");
                 td0.innerHTML = "구분";
@@ -739,18 +739,18 @@
 
                 var td1 = document.createElement("TH");
                 td1.innerHTML = "미납금액";
-                td1.style.width = "100px"
+                td1.style.width = "150px"
                 //td1.style.padding = "3px";
                 td1.style.textAlign = "center";
 
                 var td2 = document.createElement("TH");
                 td2.innerHTML = "연체금액";
-                td2.style.width = "100px"
+                td2.style.width = "150px"
                 td2.style.textAlign = "center";
 
                 var td3 = document.createElement("TH");
                 td3.innerHTML = "합계";
-                td3.style.width = "100px"
+                td3.style.width = "150px"
                 td3.style.textAlign = "center";
 
 
@@ -817,13 +817,37 @@
                 td6.style.padding = "3px";
                 td6.style.textAlign = "right";
 
-
-
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
                 tr.appendChild(td4)
                 tr.appendChild(td5)
                 tr.appendChild(td6)
+                table.appendChild(tr)
+
+
+
+
+
+                var td0 = document.createElement("TD");
+                td0.innerHTML = "입금계좌 : "
+                td0.style.padding = "3px";
+                td0.style.textAlign = "center"
+
+
+                var td4 = document.createElement("TD");
+                td4.style.padding = "3px";
+                td4.style.textAlign = "center";
+                td4.colSpan = "3"
+
+
+                if (xhr.responseText != "error page"){
+                td4.innerHTML = result[0]["bankname"] + "&nbsp&nbsp&nbsp[" + result[0]["depositno"]  + "]&nbsp&nbsp&nbsp"+ result[0]["depositno_man"];
+                }
+
+
+                var tr = document.createElement("TR");
+                tr.appendChild(td0)
+                tr.appendChild(td4)
                 table.appendChild(tr)
 
                 Table_Right.appendChild(table)
