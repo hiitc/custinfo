@@ -29,7 +29,7 @@ router.post("/login", async function(req,res,next){
     if (result != null && result.recordset.length > 0){
       res.render('user/list', {title: '계약 리스트', result: result.recordset});
     } else {
-      res.render('"error"');
+      res.render("error");
     }
   });
 });
@@ -45,7 +45,6 @@ router.post("/detail", async function(req,res,next){
     console.log(result);
 
     if (result != null && result.recordset.length > 0){
-      //console.log(result);
       res.send(result.recordset);
     } else {
       res.render("error");
@@ -66,7 +65,6 @@ router.post("/detail_right", async function(req,res,next){
     if (result != null && result.recordset.length > 0){
       res.send(result.recordset);
     } else {
-      console.log("no result")
       res.render("error");
     }
   });
