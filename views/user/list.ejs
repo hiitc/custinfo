@@ -23,6 +23,8 @@
 
             sendAjax_top('/users/detail_top', { custCode: e.children[3].defaultValue, seq: e.children[4].defaultValue })
 
+            sendAjax_right('/users/detail_right', {custCode: e.children[3].defaultValue, seq: e.children[4].defaultValue})
+
             sendAjax('/users/detail', { custCode: e.children[3].defaultValue, seq: e.children[4].defaultValue })
 
 
@@ -126,6 +128,8 @@
                 } else {
                     console.log('middletable')
                 }
+
+
 
                 var table01 = document.createElement('TABLE');
                 table01.id = "toptable";
@@ -414,7 +418,7 @@
                     //document.getElementById("detailTable").remove();
                     var reMov = document.getElementById("detailTable")
                     reMov.parentNode.removeChild(reMov);
-                    
+
                 } else {
                     console.log('detailTable')
                 }
@@ -509,7 +513,7 @@
                     var td0 = document.createElement("TD");
                     if (result[key]["perpecttag"] == 'Y') {
                         td0.innerHTML = "완납"
-                    } else if (result[key]["perpecttag"] == 'O'){
+                    } else if (result[key]["perpecttag"] == 'O') {
                         td0.innerHTML = "예정"
                     } else {
                         td0.innerHTML = "미납"
@@ -571,7 +575,7 @@
                     var td10 = document.createElement("TD");
                     if (result[key]["perpecttag"] == 'Y') {
                         td10.innerHTML = "0"
-                    } else if (result[key]["perpecttag"] == 'O'){
+                    } else if (result[key]["perpecttag"] == 'O') {
                         td10.innerHTML = "0"
                     } else {
                         td10.innerHTML = numberWithCommas(result[key]["agreeamt"] - result[key]["receiptamt"]);
@@ -605,7 +609,7 @@
 
                     if (result[key]["perpecttag"] == 'Y') {
                         discntamt_sum = discntamt_sum
-                    } else if (result[key]["perpecttag"] == 'O'){
+                    } else if (result[key]["perpecttag"] == 'O') {
                         discntamt_sum = discntamt_sum
                     } else {
                         discntamt_sum = discntamt_sum + result[key]["agreeamt"] - result[key]["receiptamt"]
@@ -616,11 +620,6 @@
 
 
 
-                agreeamt_sum
-                receiptamt_sum
-                delayamt_sum
-                discntamt_sum
-                real_receiptamt_sum
                 var td0 = document.createElement("TD");
 
                 td0.innerHTML = "합계"
@@ -699,6 +698,119 @@
             });
         }
 
+
+        function sendAjax_right(url, data) {
+             data = JSON.stringify(data);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url);
+            xhr.setRequestHeader('Content-type', "application/json");
+            xhr.send(data);
+
+            xhr.addEventListener('load', function () {
+                if (xhr.responseText != "error page"){
+                    var result = JSON.parse(xhr.responseText);
+                }
+                var html = '';
+                var minab_sum = 0;
+                var delayamt_sum = 0;
+
+                if (document.getElementById("righttable")) {
+                    console.log('already righttable')
+                    //document.getElementById("righttable").remove();
+                    var reMov = document.getElementById("righttable")
+                    reMov.parentNode.removeChild(reMov);
+
+                } else {
+                    console.log('righttable')
+                }
+
+                var table = document.createElement('TABLE');
+                table.id = "righttable"
+                table.className = "bluetop"
+                //table.style.width = "1050px"
+
+                var td0 = document.createElement("TH");
+                td0.innerHTML = "구분";
+                td0.style.width = "100px"
+                //td0.style.padding = "3px";
+                td0.style.textAlign = "center";
+
+                var td1 = document.createElement("TH");
+                td1.innerHTML = "미납금액";
+                td1.style.width = "100px"
+                //td1.style.padding = "3px";
+                td1.style.textAlign = "center";
+
+                var td2 = document.createElement("TH");
+                td2.innerHTML = "연체금액";
+                td2.style.width = "100px"
+                td2.style.textAlign = "center";
+
+                var tr = document.createElement("TR");
+                tr.appendChild(td0)
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+
+                table.appendChild(tr)
+                
+                for (key in result) {
+                    var td1 = document.createElement("TD");
+                    td1.innerHTML = result[key]["agree_name"];
+                    td1.style.padding = "3px";
+                    td1.style.textAlign = "center";
+
+                    var td2 = document.createElement("TD");
+                    td2.innerHTML = numberWithCommas(result[key]["minab_amt"]);
+                    td2.style.padding = "3px";
+                    td2.style.textAlign = "right";
+
+                    var td3 = document.createElement("TD");
+                    td3.innerHTML = numberWithCommas(result[key]["delayamt"]);
+                    td3.style.padding = "3px";
+                    td3.style.textAlign = "right";
+
+                    var tr = document.createElement("TR");
+                    tr.appendChild(td1)
+                    tr.appendChild(td2)
+                    tr.appendChild(td3)
+                    table.appendChild(tr)
+
+                    minab_sum = minab_sum + result[key]["minab_amt"]
+                    delayamt_sum = delayamt_sum + result[key]["delayamt"]
+                    
+                }
+                
+                var td0 = document.createElement("TD");
+                td0.innerHTML = "합계"
+                td0.style.padding = "3px";
+                td0.style.textAlign = "center"
+                //td0.colSpan = "3";
+
+
+                var td4 = document.createElement("TD");
+                td4.innerHTML = numberWithCommas(minab_sum);
+                td4.style.padding = "3px";
+                td4.style.textAlign = "right";
+
+                var td5 = document.createElement("TD");
+                td5.innerHTML = numberWithCommas(delayamt_sum);
+                td5.style.padding = "3px";
+                td5.style.textAlign = "right";
+
+
+
+                var tr = document.createElement("TR");
+                tr.appendChild(td0)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+                table.appendChild(tr)
+
+                Table_Right.appendChild(table)
+
+            });
+        }
+
     </script>
 
 
@@ -731,10 +843,14 @@
                 <%}%>
         </table>
     </div>
-    <div id="table_top" style="margin-bottom: 10px;"></div>
-    <div id="table_middle" style="margin-bottom: 10px;"></div>
+    <div id="table_middle" style="margin-bottom: 10px; float: left; margin-right: 30px;">   
+        <div id="table_top" style="margin-bottom: 10px;">
+        </div>
+    </div>
+    <div style="margin-bottom: 10px; float:left; height: 350px; width: 400px;">
+        <table id="Table_Right"></table>
+    </div>
     <div id="setTable" style="float:left; border:1px solid #fcf1f5; "></div>
-
     <div style="
                 width: 100%;
                 height: 200px;
