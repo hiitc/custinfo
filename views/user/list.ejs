@@ -714,6 +714,7 @@
                 var html = '';
                 var minab_sum = 0;
                 var delayamt_sum = 0;
+                var total_sum = 0;
 
                 if (document.getElementById("righttable")) {
                     console.log('already righttable')
@@ -747,11 +748,17 @@
                 td2.style.width = "100px"
                 td2.style.textAlign = "center";
 
+                var td3 = document.createElement("TH");
+                td3.innerHTML = "합계";
+                td3.style.width = "100px"
+                td3.style.textAlign = "center";
+
+
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
                 tr.appendChild(td1)
                 tr.appendChild(td2)
-
+                tr.appendChild(td3)
                 table.appendChild(tr)
                 
                 for (key in result) {
@@ -770,15 +777,20 @@
                     td3.style.padding = "3px";
                     td3.style.textAlign = "right";
 
+                    var td4 = document.createElement("TD");
+                    td4.innerHTML = numberWithCommas(result[key]["minab_amt"] + result[key]["delayamt"]);
+                    td4.style.padding = "3px";
+                    td4.style.textAlign = "right";
+
                     var tr = document.createElement("TR");
                     tr.appendChild(td1)
                     tr.appendChild(td2)
                     tr.appendChild(td3)
+                    tr.appendChild(td4)
                     table.appendChild(tr)
 
                     minab_sum = minab_sum + result[key]["minab_amt"]
                     delayamt_sum = delayamt_sum + result[key]["delayamt"]
-                    
                 }
                 
                 var td0 = document.createElement("TD");
@@ -798,12 +810,20 @@
                 td5.style.padding = "3px";
                 td5.style.textAlign = "right";
 
+                total_sum = minab_sum + delayamt_sum
+
+                var td6 = document.createElement("TD");
+                td6.innerHTML = numberWithCommas(total_sum);
+                td6.style.padding = "3px";
+                td6.style.textAlign = "right";
+
 
 
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
                 tr.appendChild(td4)
                 tr.appendChild(td5)
+                tr.appendChild(td6)
                 table.appendChild(tr)
 
                 Table_Right.appendChild(table)
