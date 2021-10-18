@@ -734,7 +734,7 @@
                 var today = new Date();
 
                 var tdh = document.createElement("TD");
-                tdh.innerHTML = "미납현황 ( ※ 연체료 산출일자 " + today.getFullYear() + "." + ("0" + (1 + today.getMonth())).slice(-2) + "." + ("0" + (1 + today.getDate())).slice(-2) + " )"
+                tdh.innerHTML = "미납현황 ( ※ 연체료 산출일자 " + today.getFullYear() + "." + ("0" + (1 + today.getMonth())).slice(-2) + "." + ("0" + today.getDate()).slice(-2) + " )"
                 tdh.style.padding = "3px";
                 tdh.style.textAlign = "left"
                 tdh.colSpan = "4"
