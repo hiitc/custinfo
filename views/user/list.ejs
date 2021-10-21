@@ -149,6 +149,7 @@
                 td01.style.width = "300px";
                 td01.style.padding = "3px";
                 td01.style.textAlign = "center";
+                td01.style.fontSize = "14px";
 
 
                 var tr = document.createElement("TR");
@@ -176,6 +177,7 @@
                 td02.style.width = "300px";
                 td02.style.padding = "3px";
                 td02.style.textAlign = "center";
+                td02.style.fontSize = "14px";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(th02_r)
@@ -198,6 +200,7 @@
                 td03.style.width = "300px";
                 td03.style.padding = "3px";
                 td03.style.textAlign = "center";
+                td03.style.fontSize = "14px";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(th03)
@@ -216,6 +219,7 @@
                 td04.style.width = "300px";
                 td04.style.padding = "3px";
                 td04.style.textAlign = "center";
+                td04.style.fontSize = "14px";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(th04)
@@ -235,6 +239,7 @@
                 td05.style.width = "300px";
                 td05.style.padding = "3px";
                 td05.style.textAlign = "center";
+                td05.style.fontSize = "14px";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(th05)
@@ -254,7 +259,8 @@
                 td07.innerHTML = numberWithCommas(result[0]["supply_amt"]);
                 td07.style.width = "300px";
                 td07.style.padding = "3px";
-                td07.style.textAlign = "center";
+                td07.style.textAlign = "right";
+                td07.style.fontSize = "14px";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(th07)
@@ -274,7 +280,8 @@
                 td08.innerHTML = numberWithCommas(result[0]["vat_amt"]);
                 td08.style.width = "300px";
                 td08.style.padding = "3px";
-                td08.style.textAlign = "center";
+                td08.style.textAlign = "right";
+                td08.style.fontSize = "14px";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(th08)
@@ -295,7 +302,8 @@
                 td06.innerHTML = numberWithCommas(result[0]["htot_amt"]);
                 td06.style.width = "300px";
                 td06.style.padding = "3px";
-                td06.style.textAlign = "center";
+                td06.style.textAlign = "right";
+                td06.style.fontSize = "14px";
 
 
                 var tr = document.createElement("TR");
@@ -350,12 +358,14 @@
                 td0.style.width = "50px"
                 td0.style.padding = "3px";
                 td0.style.textAlign = "center";
+                td0.style.fontSize = "14px";
 
                 var td1 = document.createElement("TD");
                 td1.innerHTML = result[0]["daechul_bankname"];
                 td1.style.width = "250px"
                 td1.style.padding = "3px";
                 td1.style.textAlign = "center";
+                td1.style.fontSize = "14px";
 
 
                 var td2 = document.createElement("TD");
@@ -370,12 +380,14 @@
                 td2.style.width = "100px"
                 td2.style.padding = "3px";
                 td2.style.textAlign = "right";
+                td2.style.fontSize = "14px";
 
                 var td3 = document.createElement("TD");
                 td3.innerHTML = result[0]["daechul_rate_text"];
                 td3.style.width = "100px"
                 td3.style.padding = "3px";
                 td3.style.textAlign = "center";
+                td3.style.fontSize = "14px";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
@@ -521,27 +533,32 @@
                     /*td0.innerHTML = result[key]["perpecttag"];*/
                     td0.style.padding = "3px";
                     td0.style.textAlign = "center";
+                    td0.style.fontSize = "14px";
 
 
                     var td1 = document.createElement("TD");
                     td1.innerHTML = result[key]["agree_name"];
                     td1.style.padding = "3px";
                     td1.style.textAlign = "center";
+                    td1.style.fontSize = "14px";
 
                     var td2 = document.createElement("TD");
                     td2.innerHTML = result[key]["agreedate"].substr(0, 10);
                     td2.style.padding = "3px";
                     td2.style.textAlign = "center";
+                    td2.style.fontSize = "14px";
 
                     var td3 = document.createElement("TD");
                     td3.innerHTML = numberWithCommas(result[key]["agreeamt"]);
                     td3.style.padding = "3px";
                     td3.style.textAlign = "right";
+                    td3.style.fontSize = "14px";
 
                     var td4 = document.createElement("TD");
                     td4.innerHTML = result[key]["times"];
                     td4.style.padding = "3px";
                     td4.style.textAlign = "center";
+                    td4.style.fontSize = "14px";
 
                     var td5 = document.createElement("TD");
                     if (result[key]["receiptdate"]) {
@@ -551,26 +568,31 @@
                     }
                     td5.style.padding = "3px";
                     td5.style.textAlign = "center";
+                    td5.style.fontSize = "14px";
 
                     var td6 = document.createElement("TD");
                     td6.innerHTML = numberWithCommas(result[key]["receiptamt"]);
                     td6.style.padding = "3px";
                     td6.style.textAlign = "right";
+                    td6.style.fontSize = "14px";
 
                     var td7 = document.createElement("TD");
                     td7.innerHTML = result[key]["delaydays"];
                     td7.style.padding = "3px";
                     td7.style.textAlign = "center";
+                    td7.style.fontSize = "14px";
 
                     var td8 = document.createElement("TD");
                     td8.innerHTML = numberWithCommas(result[key]["delayamt"]);
                     td8.style.padding = "3px";
                     td8.style.textAlign = "right";
+                    td8.style.fontSize = "14px";
 
                     var td9 = document.createElement("TD");
                     td9.innerHTML = result[key]["discntdays"];
                     td9.style.padding = "3px";
                     td9.style.textAlign = "center";
+                    td9.style.fontSize = "14px";
 
                     var td10 = document.createElement("TD");
                     if (result[key]["perpecttag"] == 'Y') {
@@ -582,11 +604,13 @@
                     }
                     td10.style.padding = "3px";
                     td10.style.textAlign = "right";
+                    td10.style.fontSize = "14px";
 
                     var td11 = document.createElement("TD");
                     td11.innerHTML = numberWithCommas(result[key]["real_receiptamt"]);
                     td11.style.padding = "3px";
                     td11.style.textAlign = "right";
+                    td11.style.fontSize = "14px";
 
                     var tr = document.createElement("TR");
                     tr.appendChild(td0)
@@ -626,52 +650,72 @@
                 td0.style.padding = "3px";
                 td0.style.textAlign = "center"
                 td0.colSpan = "3";
+                td0.style.fontSize = "14px";
+                td0.style.fontWeight = "700";
+                
 
 
                 var td3 = document.createElement("TD");
                 td3.innerHTML = numberWithCommas(agreeamt_sum);
                 td3.style.padding = "3px";
                 td3.style.textAlign = "right";
+                td3.style.fontSize = "14px";
+                td3.style.fontWeight = "700";
 
                 var td4 = document.createElement("TD");
                 td4.innerHTML = "";
                 td4.style.padding = "3px";
                 td4.style.textAlign = "center";
+                td4.style.fontSize = "14px";
+                td4.style.fontWeight = "700";
 
                 var td5 = document.createElement("TD");
                 td5.innerHTML = "";
                 td5.style.padding = "3px";
                 td5.style.textAlign = "center";
+                td5.style.fontWeight = "700";
 
                 var td6 = document.createElement("TD");
                 td6.innerHTML = numberWithCommas(receiptamt_sum);
                 td6.style.padding = "3px";
                 td6.style.textAlign = "right";
+                td6.style.fontSize = "14px";
+                td6.style.fontWeight = "700";
 
                 var td7 = document.createElement("TD");
                 td7.innerHTML = "";
                 td7.style.padding = "3px";
                 td7.style.textAlign = "center";
+                td7.style.fontSize = "14px";
+                td7.style.fontWeight = "700";
 
                 var td8 = document.createElement("TD");
                 td8.innerHTML = numberWithCommas(delayamt_sum);
                 td8.style.padding = "3px";
                 td8.style.textAlign = "right";
+                td8.style.fontSize = "14px";
+                td8.style.fontWeight = "700";
 
                 var td9 = document.createElement("TD");
                 td9.innerHTML = "";
                 td9.style.padding = "3px";
                 td9.style.textAlign = "center";
+                td9.style.fontSize = "14px";
+                td9.style.fontWeight = "700";
 
                 var td10 = document.createElement("TD");
                 td10.innerHTML = numberWithCommas(discntamt_sum);
                 td10.style.padding = "3px";
                 td10.style.textAlign = "right";
+                td10.style.fontSize = "14px";
+                td10.style.fontWeight = "700";
 
                 var td11 = document.createElement("TD");
                 td11.innerHTML = numberWithCommas(real_receiptamt_sum);
                 td11.style.padding = "3px";
                 td11.style.textAlign = "right";
+                td11.style.fontSize = "14px";
+                td11.style.fontWeight = "700";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
@@ -738,6 +782,7 @@
                 tdh.style.padding = "3px";
                 tdh.style.textAlign = "left"
                 tdh.colSpan = "4"
+                tdh.style.fontWeight = "700";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(tdh)
@@ -778,21 +823,25 @@
                     td1.innerHTML = result[key]["agree_name"];
                     td1.style.padding = "3px";
                     td1.style.textAlign = "center";
+                    td1.style.fontSize = "14px";
 
                     var td2 = document.createElement("TD");
                     td2.innerHTML = numberWithCommas(result[key]["minab_amt"]);
                     td2.style.padding = "3px";
                     td2.style.textAlign = "right";
+                    td2.style.fontSize = "14px";
 
                     var td3 = document.createElement("TD");
                     td3.innerHTML = numberWithCommas(result[key]["delayamt"]);
                     td3.style.padding = "3px";
                     td3.style.textAlign = "right";
+                    td3.style.fontSize = "14px";
 
                     var td4 = document.createElement("TD");
                     td4.innerHTML = numberWithCommas(result[key]["minab_amt"] + result[key]["delayamt"]);
                     td4.style.padding = "3px";
                     td4.style.textAlign = "right";
+                    td4.style.fontSize = "14px";
 
                     var tr = document.createElement("TR");
                     tr.appendChild(td1)
@@ -809,6 +858,8 @@
                 td0.innerHTML = "합계"
                 td0.style.padding = "3px";
                 td0.style.textAlign = "center"
+                td0.style.fontSize = "14px";
+                td0.style.fontWeight = "700";
                 //td0.colSpan = "3";
 
 
@@ -816,11 +867,15 @@
                 td4.innerHTML = numberWithCommas(minab_sum);
                 td4.style.padding = "3px";
                 td4.style.textAlign = "right";
+                td4.style.fontSize = "14px";
+                td4.style.fontWeight = "700";
 
                 var td5 = document.createElement("TD");
                 td5.innerHTML = numberWithCommas(delayamt_sum);
                 td5.style.padding = "3px";
                 td5.style.textAlign = "right";
+                td5.style.fontSize = "14px";
+                td5.style.fontWeight = "700";
 
                 total_sum = minab_sum + delayamt_sum
 
@@ -828,6 +883,8 @@
                 td6.innerHTML = numberWithCommas(total_sum);
                 td6.style.padding = "3px";
                 td6.style.textAlign = "right";
+                td6.style.fontSize = "14px";
+                td6.style.fontWeight = "700";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
@@ -841,15 +898,19 @@
 
 
                 var td0 = document.createElement("TD");
-                td0.innerHTML = "입금계좌 : "
+                td0.innerHTML = "입금계좌 : ";
                 td0.style.padding = "3px";
-                td0.style.textAlign = "center"
+                td0.style.textAlign = "center";
+                td0.style.fontSize = "14px";
+                td0.style.fontWeight = "700";
 
 
                 var td4 = document.createElement("TD");
                 td4.style.padding = "3px";
                 td4.style.textAlign = "center";
                 td4.colSpan = "3"
+                td4.style.fontSize = "14px";
+                td4.style.fontWeight = "700";
 
 
                 if (xhr.responseText != "error page"){
