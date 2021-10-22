@@ -45,6 +45,7 @@
         .bluetop th {
             color: rgba(170, 25, 56, 0.856);
             background: #fcf1f5;
+            font-weight: normal;
         }
 
         .bluetop th,
@@ -142,6 +143,7 @@
                 th01.style.padding = "3px";
                 th01.style.textAlign = "center";
                 th01.colSpan = "2";
+                th01.style.fontWeight = "700";
 
 
                 var td01 = document.createElement("TD");
@@ -165,12 +167,14 @@
                 th02_r.style.padding = "3px";
                 th02_r.style.textAlign = "center";
                 th02_r.rowSpan = "4";
+                th02_r.style.fontWeight = "700";
 
                 var th02 = document.createElement("TH");
                 th02.innerHTML = "건물명";
                 th02.style.width = "100px";
                 th02.style.padding = "3px";
                 th02.style.textAlign = "center";
+                th02.style.fontWeight = "700";
 
                 var td02 = document.createElement("TD");
                 td02.innerHTML = result[0]["shortname"];
@@ -194,6 +198,7 @@
                 th03.style.width = "100px";
                 th03.style.padding = "3px";
                 th03.style.textAlign = "center";
+                th03.style.fontWeight = "700";
 
                 var td03 = document.createElement("TD");
                 td03.innerHTML = result[0]["address"];
@@ -213,6 +218,7 @@
                 th04.style.width = "100px";
                 th04.style.padding = "3px";
                 th04.style.textAlign = "center";
+                th04.style.fontWeight = "700";
 
                 var td04 = document.createElement("TD");
                 td04.innerHTML = result[0]["house_name"];
@@ -233,6 +239,7 @@
                 th05.style.width = "100px";
                 th05.style.padding = "3px";
                 th05.style.textAlign = "center";
+                th05.style.fontWeight = "700";
 
                 var td05 = document.createElement("TD");
                 td05.innerHTML = result[0]["out_buildno"] + " / " + result[0]["out_houseno"];
@@ -254,6 +261,7 @@
                 th07.style.padding = "3px";
                 th07.style.textAlign = "center";
                 th07.colSpan = "2";
+                th07.style.fontWeight = "700";
 
                 var td07 = document.createElement("TD");
                 td07.innerHTML = numberWithCommas(result[0]["supply_amt"]);
@@ -261,6 +269,7 @@
                 td07.style.padding = "3px";
                 td07.style.textAlign = "right";
                 td07.style.fontSize = "14px";
+                td07.style.fontWeight = "700";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(th07)
@@ -275,6 +284,7 @@
                 th08.style.padding = "3px";
                 th08.style.textAlign = "center";
                 th08.colSpan = "2";
+                th08.style.fontWeight = "700";
 
                 var td08 = document.createElement("TD");
                 td08.innerHTML = numberWithCommas(result[0]["vat_amt"]);
@@ -282,6 +292,7 @@
                 td08.style.padding = "3px";
                 td08.style.textAlign = "right";
                 td08.style.fontSize = "14px";
+                td08.style.fontWeight = "700";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(th08)
@@ -297,6 +308,7 @@
                 th06.style.padding = "3px";
                 th06.style.textAlign = "center";
                 th06.colSpan = "2";
+                th06.style.fontWeight = "700";
 
                 var td06 = document.createElement("TD");
                 td06.innerHTML = numberWithCommas(result[0]["htot_amt"]);
@@ -304,6 +316,7 @@
                 td06.style.padding = "3px";
                 td06.style.textAlign = "right";
                 td06.style.fontSize = "14px";
+                td06.style.fontWeight = "700";
 
 
                 var tr = document.createElement("TR");
@@ -325,12 +338,14 @@
                 td0.style.width = "50px"
                 td0.style.padding = "3px";
                 td0.style.textAlign = "center";
+                td0.style.fontWeight = "700";
 
                 var td1 = document.createElement("TH");
                 td1.innerHTML = "은행";
                 td1.style.width = "250px"
                 td1.style.padding = "3px";
                 td1.style.textAlign = "center";
+                td1.style.fontWeight = "700";
 
 
                 var td2 = document.createElement("TH");
@@ -338,12 +353,14 @@
                 td2.style.width = "100px"
                 td2.style.padding = "3px";
                 td2.style.textAlign = "center";
+                td2.style.fontWeight = "700";
 
                 var td3 = document.createElement("TH");
                 td3.innerHTML = "금리";
                 td3.style.width = "100px"
                 td3.style.padding = "3px";
                 td3.style.textAlign = "center";
+                td3.style.fontWeight = "700";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
@@ -446,63 +463,75 @@
                 td0.style.width = "50px"
                 td0.style.padding = "3px";
                 td0.style.textAlign = "center";
+                td0.style.fontWeight = "700";
 
                 var td1 = document.createElement("TH");
                 td1.innerHTML = "구분";
                 td1.style.width = "100px"
                 td1.style.padding = "3px";
                 td1.style.textAlign = "center";
+                td1.style.fontWeight = "700";
 
 
                 var td2 = document.createElement("TH");
                 td2.innerHTML = "약정일";
                 td2.style.padding = "3px";
                 td2.style.textAlign = "center";
+                td2.style.fontWeight = "700";
 
                 var td3 = document.createElement("TH");
                 td3.innerHTML = "약정금액";
                 td3.style.width = "90px"
                 td3.style.textAlign = "center";
+                td3.style.fontWeight = "700";
 
                 var td4 = document.createElement("TH");
                 td4.innerHTML = "납입횟수";
                 td4.style.padding = "3px";
                 td4.style.textAlign = "center";
+                td4.style.fontWeight = "700";
 
                 var td5 = document.createElement("TH");
                 td5.innerHTML = "입금일";
                 td5.style.padding = "3px";
                 td5.style.textAlign = "center";
+                td5.style.fontWeight = "700";
 
                 var td6 = document.createElement("TH");
                 td6.innerHTML = "입금금액";
                 td6.style.width = "90px"
                 td6.style.textAlign = "center";
+                td6.style.fontWeight = "700";
 
                 var td7 = document.createElement("TH");
                 td7.innerHTML = "연체일수";
                 td7.style.padding = "3px";
                 td7.style.textAlign = "center";
+                td7.style.fontWeight = "700";
 
                 var td8 = document.createElement("TH");
                 td8.innerHTML = "연체료";
                 td8.style.padding = "3px";
                 td8.style.textAlign = "center";
+                td8.style.fontWeight = "700";
 
                 var td9 = document.createElement("TH");
                 td9.innerHTML = "할인일수";
                 td9.style.padding = "3px";
                 td9.style.textAlign = "center";
+                td9.style.fontWeight = "700";
 
                 var td10 = document.createElement("TH");
                 td10.innerHTML = "미납금액";
                 td10.style.padding = "3px";
                 td10.style.textAlign = "center";
+                td10.style.fontWeight = "700";
 
                 var td11 = document.createElement("TH");
                 td11.innerHTML = "실납입액";
                 td11.style.width = "90px"
                 td11.style.textAlign = "center";
+                td11.style.fontWeight = "700";
 
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
@@ -782,6 +811,7 @@
                 tdh.style.padding = "3px";
                 tdh.style.textAlign = "left"
                 tdh.colSpan = "4"
+                tdh.style.fontSize = "14px";
                 tdh.style.fontWeight = "700";
 
                 var tr = document.createElement("TR");
@@ -793,22 +823,26 @@
                 td0.style.width = "100px"
                 //td0.style.padding = "3px";
                 td0.style.textAlign = "center";
+                td0.style.fontWeight = "700";
 
                 var td1 = document.createElement("TH");
                 td1.innerHTML = "미납금액";
                 td1.style.width = "150px"
                 //td1.style.padding = "3px";
                 td1.style.textAlign = "center";
+                td1.style.fontWeight = "700";
 
                 var td2 = document.createElement("TH");
                 td2.innerHTML = "연체료";
                 td2.style.width = "150px"
                 td2.style.textAlign = "center";
+                td2.style.fontWeight = "700";
 
                 var td3 = document.createElement("TH");
                 td3.innerHTML = "합계";
                 td3.style.width = "150px"
                 td3.style.textAlign = "center";
+                td3.style.fontWeight = "700";
 
 
                 var tr = document.createElement("TR");
@@ -819,25 +853,25 @@
                 table.appendChild(tr)
                 
                 for (key in result) {
-                    var td1 = document.createElement("TD");
+                    var td1 = document.createElement("TH");
                     td1.innerHTML = result[key]["agree_name"];
                     td1.style.padding = "3px";
                     td1.style.textAlign = "center";
                     td1.style.fontSize = "14px";
 
-                    var td2 = document.createElement("TD");
+                    var td2 = document.createElement("TH");
                     td2.innerHTML = numberWithCommas(result[key]["minab_amt"]);
                     td2.style.padding = "3px";
                     td2.style.textAlign = "right";
                     td2.style.fontSize = "14px";
 
-                    var td3 = document.createElement("TD");
+                    var td3 = document.createElement("TH");
                     td3.innerHTML = numberWithCommas(result[key]["delayamt"]);
                     td3.style.padding = "3px";
                     td3.style.textAlign = "right";
                     td3.style.fontSize = "14px";
 
-                    var td4 = document.createElement("TD");
+                    var td4 = document.createElement("TH");
                     td4.innerHTML = numberWithCommas(result[key]["minab_amt"] + result[key]["delayamt"]);
                     td4.style.padding = "3px";
                     td4.style.textAlign = "right";
@@ -854,7 +888,7 @@
                     delayamt_sum = delayamt_sum + result[key]["delayamt"]
                 }
                 
-                var td0 = document.createElement("TD");
+                var td0 = document.createElement("TH");
                 td0.innerHTML = "합계"
                 td0.style.padding = "3px";
                 td0.style.textAlign = "center"
@@ -863,14 +897,14 @@
                 //td0.colSpan = "3";
 
 
-                var td4 = document.createElement("TD");
+                var td4 = document.createElement("TH");
                 td4.innerHTML = numberWithCommas(minab_sum);
                 td4.style.padding = "3px";
                 td4.style.textAlign = "right";
                 td4.style.fontSize = "14px";
                 td4.style.fontWeight = "700";
 
-                var td5 = document.createElement("TD");
+                var td5 = document.createElement("TH");
                 td5.innerHTML = numberWithCommas(delayamt_sum);
                 td5.style.padding = "3px";
                 td5.style.textAlign = "right";
@@ -879,7 +913,7 @@
 
                 total_sum = minab_sum + delayamt_sum
 
-                var td6 = document.createElement("TD");
+                var td6 = document.createElement("TH");
                 td6.innerHTML = numberWithCommas(total_sum);
                 td6.style.padding = "3px";
                 td6.style.textAlign = "right";
@@ -939,9 +973,9 @@
     <div style=" border:1px solid #fcf1f5; float:left; height: 100%; margin-right: 50px; margin-bottom: 350px;">
         <table class="bluetop" id="left_table">
             <tr>
-                <th>현장</th>
-                <th>동</th>
-                <th>호수</th>
+                <th><b>햔장</b></th>
+                <th><b>동</b></th>
+                <th><b>호수</b></th>
             </tr>
             <% for(var i=0; i<result.length; i++) { var data=result[i]; %>
                 <tr onclick="rowclick(this)" style="cursor:pointer;">
