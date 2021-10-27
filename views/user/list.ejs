@@ -832,6 +832,12 @@
                 td1.style.textAlign = "center";
                 td1.style.fontWeight = "700";
 
+                var td12 = document.createElement("TH");
+                td12.innerHTML = "연체일수";
+                td12.style.width = "150px"
+                td12.style.textAlign = "center";
+                td12.style.fontWeight = "700";
+
                 var td2 = document.createElement("TH");
                 td2.innerHTML = "연체료";
                 td2.style.width = "150px"
@@ -848,6 +854,7 @@
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
                 tr.appendChild(td1)
+                tr.appendChild(td12)
                 tr.appendChild(td2)
                 tr.appendChild(td3)
                 table.appendChild(tr)
@@ -865,6 +872,12 @@
                     td2.style.textAlign = "right";
                     td2.style.fontSize = "14px";
 
+                    var td31 = document.createElement("TH");
+                    td31.innerHTML = numberWithCommas(result[key]["delaydays"]);
+                    td31.style.padding = "3px";
+                    td31.style.textAlign = "right";
+                    td31.style.fontSize = "14px";
+
                     var td3 = document.createElement("TH");
                     td3.innerHTML = numberWithCommas(result[key]["delayamt"]);
                     td3.style.padding = "3px";
@@ -880,6 +893,7 @@
                     var tr = document.createElement("TR");
                     tr.appendChild(td1)
                     tr.appendChild(td2)
+                    tr.appendChild(td31)
                     tr.appendChild(td3)
                     tr.appendChild(td4)
                     table.appendChild(tr)
@@ -904,6 +918,13 @@
                 td4.style.fontSize = "14px";
                 td4.style.fontWeight = "700";
 
+                var td51 = document.createElement("TH");
+                td51.innerHTML = "";
+                td51.style.padding = "3px";
+                td51.style.textAlign = "right";
+                td51.style.fontSize = "14px";
+                td51.style.fontWeight = "700";
+
                 var td5 = document.createElement("TH");
                 td5.innerHTML = numberWithCommas(delayamt_sum);
                 td5.style.padding = "3px";
@@ -923,6 +944,7 @@
                 var tr = document.createElement("TR");
                 tr.appendChild(td0)
                 tr.appendChild(td4)
+                tr.appendChild(td51)
                 tr.appendChild(td5)
                 tr.appendChild(td6)
                 table.appendChild(tr)
@@ -942,7 +964,7 @@
                 var td4 = document.createElement("TD");
                 td4.style.padding = "3px";
                 td4.style.textAlign = "center";
-                td4.colSpan = "3"
+                td4.colSpan = "4"
                 td4.style.fontSize = "14px";
                 td4.style.fontWeight = "700";
 
