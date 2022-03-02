@@ -546,7 +546,7 @@
                 td5.style.fontWeight = "700";
 
                 var td6 = document.createElement("TH");
-                td6.innerHTML = "입금금액";
+                td6.innerHTML = "실납입액";
                 td6.style.width = "90px"
                 td6.style.textAlign = "center";
                 td6.style.fontWeight = "700";
@@ -576,7 +576,7 @@
                 td10.style.fontWeight = "700";
 
                 var td11 = document.createElement("TH");
-                td11.innerHTML = "실납입액";
+                td11.innerHTML = "인정금액";
                 td11.style.width = "90px"
                 td11.style.textAlign = "center";
                 td11.style.fontWeight = "700";
@@ -677,7 +677,7 @@
                     } else if (result[key]["perpecttag"] == 'O') {
                         td10.innerHTML = "0"
                     } else {
-                        td10.innerHTML = numberWithCommas(result[key]["agreeamt"] - result[key]["receiptamt"]);
+                        td10.innerHTML = numberWithCommas(result[key]["agreeamt"] - result[key]["real_receiptamt"]);
                     }
                     td10.style.padding = "3px";
                     td10.style.textAlign = "right";
